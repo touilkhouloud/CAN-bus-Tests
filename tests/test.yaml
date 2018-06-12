@@ -1,0 +1,21 @@
+metadata:
+  name: my_can_test
+  format: "Lava-Test-Shell Test Definition 1.0"
+  description: "my_can_test"
+  version: 1.0
+
+run:
+  steps:
+    - echo "CAN_tests"
+    - chmod +x tests/test_can_send_receive.sh
+    - lava-test-set start test_can_send_receive
+    - ./tests/test_can_send_receive.sh
+    - lava-test-set stop
+    - chmod +x tests/test_stats.sh
+    - lava-test-set start test_stats
+    - ./tests/test_stats.sh
+    - lava-test-set stop
+    - chmod +x tests/test_can_modules.sh
+    - lava-test-set start test_can_modules
+    - ./tests/test_can_modules.sh
+    - lava-test-set stop
